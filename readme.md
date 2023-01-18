@@ -1,3 +1,7 @@
+# Tutorial usado
+
+[Sitio web con python | CRUD django mysql](https://youtu.be/ezIj71CX944)
+
 # Migraciones
 Una vez se crean los modelos y se hace la conexion a la base de datos, se llevan a cabo las migraciones con el comando:
 
