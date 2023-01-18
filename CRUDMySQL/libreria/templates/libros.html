@@ -1,0 +1,37 @@
+{% extends "_partials/layout.html" %}
+{% block contenido %}
+<div class="card">
+    <div class="card-header">
+        <a href="{% url 'Add_Book_Form'%}" class="btn btn-success">Agregar Nuevo Libro</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Libros</h4>
+        <table class="table table-stripped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Imagen</th>
+                    <th>Descripcion</th>
+                    <th colspan="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if libros %}
+                    {% for l in libros %}
+                        <tr>
+                            <td>{{l.id}}</td>
+                            <td>{{l.titulo}}</td>
+                            <td><img src="{{l.imagen.url}}" alt="" class="img-fluid"></td>
+                            <td>{{l.descripcion}}</td>
+                            <td><a href="{% url 'Edit_Book_Form' l.id%}" class="btn btn-warning">Editar</a></td>
+                            <td><a href="{% url 'EliminarLibro' l.id %}" class="btn btn-danger">Eliminar</a></td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                
+            </tbody>             
+        </table>
+    </div>
+</div>
+{% endblock %}

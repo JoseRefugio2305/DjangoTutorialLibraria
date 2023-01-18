@@ -1,0 +1,19 @@
+<form enctype="multipart/form-data" method="POST" id="formAddEdit">
+  {% csrf_token %}{# token para autentificar y proteger el formulario#}
+  {% for campo in formulario %}
+  <div class="mb-3">
+    <label for="titulo" class="form-label">{{campo.label}}</label>{#Con label se usa lo que en models se indico como el verbose_name#}
+    {% if campo.field.widget.input_type == 'file' and campo.value %}
+      <div class="col-12" style="text-align: center;">
+        <img src="{{MEDIA_URL}}/img/{{campo.value}}" alt="" class="img-fluid">
+      </div>
+    {% endif %}
+    <input type="{{campo.field.widget.input_type}}" class="form-control" name="{{campo.name}}" id="{{campo.name}}" value="{{ campo.value | default:'' }}">
+    <small id="helpId" class="form-text text-muted">Ingresa {{campo.label}}</small>
+  </div>
+
+  <div class="col-12 help-text" style="color: red; font-weight: bold;">{{campo.errors}}</div>{#Validacion del campo, recarga pagina cuando el formulario no es vlaido#}
+  {% endfor %}
+  <button type="submit" class="btn btn-primary">Agregar Cambios</button>
+  <a href="{% url 'Libros' %}" class="btn btn-secondary">Cancelar</a>
+</form>
