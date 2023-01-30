@@ -25,8 +25,8 @@ python manage.py runserver
 Una vez se crean los modelos y se hace la conexion a la base de datos, se llevan a cabo las migraciones con el comando:
 
 ~~~
-python manage.py makemigrations
-python manage.py migrate
+python manage.py makemigrations NombreApp
+python manage.py migrate NombreApp
 ~~~
 
 En la ruta de la aplicacion principal. Esto hace que en base de datos se creen las tablas que corresponden a los modelos.
