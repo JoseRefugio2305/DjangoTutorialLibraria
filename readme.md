@@ -46,4 +46,26 @@ python manage.py createsuperuser
 
 Este comando al ser ejecutado pide la informacion necesaria para crear el usuario.
 
+# Conexion a Base de Datos MySQL
 
+Dentro del archivo settings.py de la aplicacion principal, se debe de agregar los datos de la conexion.
+~~~python 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'libreria',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST':'localhost',
+        'PORT':'3306'
+    }
+}
+~~~
+
+En el archivo __init__.py de la misma aplicacion principal, se debe agregar lo siguiente para inicializar el cliente de la conexion PyMySQL
+
+~~~python
+import pymysql
+
+pymysql.install_as_MySQLdb()#Esto es para poder interactuar con la base de datos, sin esta instalacion da error
+~~~
